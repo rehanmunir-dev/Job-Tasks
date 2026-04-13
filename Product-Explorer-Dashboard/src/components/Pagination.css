@@ -1,0 +1,102 @@
+/* ===== Pagination ===== */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding: 0.75rem;
+  animation: fadeInUp 500ms ease 200ms backwards;
+}
+
+/* ---- Shared button style ---- */
+.page-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  height: 38px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: var(--transition-fast);
+}
+
+.page-btn:hover:not(:disabled) {
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+  border-color: rgba(108, 99, 255, 0.2);
+}
+
+.page-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+}
+
+/* ---- Nav buttons (Prev / Next) ---- */
+.nav-btn {
+  padding: 0 0.85rem;
+}
+
+.nav-text {
+  font-size: 0.82rem;
+}
+
+/* ---- Number buttons ---- */
+.page-numbers {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.num-btn {
+  width: 38px;
+  padding: 0;
+}
+
+.num-btn.active {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(108, 99, 255, 0.35);
+}
+
+.num-btn.active:hover {
+  background: var(--accent-primary);
+  color: #fff;
+}
+
+.page-dots {
+  width: 38px;
+  text-align: center;
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 1rem;
+  user-select: none;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 600px) {
+  .nav-text {
+    display: none;
+  }
+
+  .nav-btn {
+    padding: 0 0.6rem;
+  }
+
+  .page-btn {
+    height: 34px;
+    font-size: 0.82rem;
+  }
+
+  .num-btn {
+    width: 34px;
+  }
+}

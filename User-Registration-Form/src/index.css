@@ -1,0 +1,127 @@
+/* ── Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@import "tailwindcss";
+
+/* ── Custom design tokens via Tailwind v4 theme ── */
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --color-surface: #16182b;
+  --color-card: rgba(25, 28, 50, 0.85);
+  --color-accent: #7c5cfc;
+  --color-accent-hover: #9b7dff;
+  --color-danger: #f43f5e;
+  --color-danger-bg: rgba(244, 63, 94, 0.08);
+  --color-success: #22c55e;
+  --color-muted: #7c7e9a;
+  --color-border: rgba(255, 255, 255, 0.06);
+}
+
+/* ── Base ── */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Floating particles ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%      { transform: translateY(-60px) scale(1.15); }
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--color-accent);
+  opacity: 0.04;
+  animation: float 18s infinite ease-in-out;
+}
+
+/* ── Card entrance ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.7s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* ── Shake (invalid submit) ── */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%  { transform: translateX(-6px); }
+  40%  { transform: translateX(6px); }
+  60%  { transform: translateX(-4px); }
+  80%  { transform: translateX(4px); }
+}
+
+.animate-shake {
+  animation: shake 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Success checkmark ── */
+@keyframes drawCircle {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes drawCheck {
+  to { stroke-dashoffset: 0; }
+}
+
+.checkmark-circle {
+  stroke-dasharray: 176;
+  stroke-dashoffset: 176;
+  animation: drawCircle 0.6s 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.checkmark-check {
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: drawCheck 0.4s 0.65s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ── Pop-in for success overlay ── */
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.animate-pop-in {
+  animation: popIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* ── Spinner ── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 0.65s linear infinite;
+}
+
+/* ── Shimmer on button hover ── */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transition: left 0.5s;
+}
+
+.btn-shimmer:hover::after {
+  left: 100%;
+}
+
+/* ── Password strength levels ── */
+.strength-weak   { width: 33%;  background: var(--color-danger); }
+.strength-medium { width: 66%;  background: #f59e0b; }
+.strength-strong { width: 100%; background: var(--color-success); }
