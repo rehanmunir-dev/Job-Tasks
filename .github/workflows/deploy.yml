@@ -42,8 +42,7 @@ jobs:
           mkdir -p public
           cp -r Product-Explorer-Dashboard/dist public/dashboard
           cp -r User-Registration-Form/dist public/form
-          # Create a simple landing page
-          echo '<html><body style="background:#0f0f1a;color:white;font-family:sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;"><h1>Rehan Munir - Job Tasks</h1><div style="display:flex;gap:20px;"><a href="dashboard" style="color:#7c5cfc;font-weight:bold;text-decoration:none;padding:15px 25px;border:1px solid currentColor;border-radius:8px;">Dashboard</a><a href="form" style="color:#7c5cfc;font-weight:bold;text-decoration:none;padding:15px 25px;border:1px solid currentColor;border-radius:8px;">Registration Form</a></div></body></html>' > public/index.html
+          cp landing.html public/index.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
