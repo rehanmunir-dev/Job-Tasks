@@ -295,7 +295,10 @@ export default function App() {
     <>
       <Particles />
 
-      <main className="relative z-10 flex items-center justify-center min-h-screen px-5 py-10">
+      <main
+        className="relative z-10 flex items-center justify-center min-h-screen px-5 py-10 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: 'linear-gradient(rgba(15, 15, 26, 0.8), rgba(15, 15, 26, 0.8)), url("/Job-Tasks/form/bg-image.png")' }}
+      >
         {/* ── Card ── */}
         <section
           id="formCard"
