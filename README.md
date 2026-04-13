@@ -82,5 +82,5 @@ To clone and run these projects locally:
 
 ## 📬 Contact Information
 *   **Developer**: [Rehan Munir](https://rehanmunir-dev.github.io/Job-Tasks/)
-*   **LinkedIn**: [rehan-munir-79a04a2ab](https://www.linkedin.com/in/rehan-munir-79a04a2ab/)
+*   **LinkedIn**: [rehanmunir343](https://www.linkedin.com/in/rehanmunir343/)
 *   **GitHub**: [rehanmunir-dev](https://github.com/rehanmunir-dev)
