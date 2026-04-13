@@ -1,0 +1,54 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: './*/package-lock.json'
+
+      - name: Build Product-Explorer-Dashboard
+        run: |
+          cd Product-Explorer-Dashboard
+          npm install
+          npm run build
+        
+      - name: Build User-Registration-Form
+        run: |
+          cd User-Registration-Form
+          npm install
+          npm run build
+
+      - name: Prepare Deployment Folder
+        run: |
+          mkdir -p public
+          cp -r Product-Explorer-Dashboard/dist public/dashboard
+          cp -r User-Registration-Form/dist public/form
+          # Create a simple landing page
+          echo '<html><body style="background:#0f0f1a;color:white;font-family:sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;"><h1>Rehan Munir - Job Tasks</h1><div style="display:flex;gap:20px;"><a href="dashboard" style="color:#7c5cfc;font-weight:bold;text-decoration:none;padding:15px 25px;border:1px solid currentColor;border-radius:8px;">Dashboard</a><a href="form" style="color:#7c5cfc;font-weight:bold;text-decoration:none;padding:15px 25px;border:1px solid currentColor;border-radius:8px;">Registration Form</a></div></body></html>' > public/index.html
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './public'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
